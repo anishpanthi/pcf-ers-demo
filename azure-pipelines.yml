@@ -21,3 +21,13 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: CloudFoundry@1
+  inputs:
+    cfEndpoint: 'PWS'
+    skipSSLValidation: true
+    org: 'mordor'
+    space: 'development'
+    deploymentOptions: 'manifest'
+    cfManifest: 'manifest-dev.yml'
+    createServices: false
+    bindServices: false
